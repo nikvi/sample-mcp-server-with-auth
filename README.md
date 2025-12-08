@@ -1,0 +1,1 @@
+uv add anthropic httpx fastapi uvicorn python-dotenv descope mcp
