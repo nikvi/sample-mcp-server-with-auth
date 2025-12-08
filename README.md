@@ -13,5 +13,5 @@ It consists of two independent services:
     * source .venv/bin/activate 
     * uv pip install mcp fastapi uvicorn httpx pyjwt cryptography
 4. **You must run both services in separate terminal windows. Order matters slightly - start the Auth Provider first so the MCP Server can fetch keys.**
-5. python auth_provider.py - This service mimics an Identity Provider (like Auth0 or Descope) on port 9090.
-6. python server.py - This service hosts the tools and validates tokens against the Auth Provider.
+5. `python auth_provider.py` - This service mimics an Identity Provider (like Auth0 or Descope) on port 9090.
+6. `python server.py` - This service hosts the tools and validates tokens against the Auth Provider.
