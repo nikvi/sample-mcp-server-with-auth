@@ -6,7 +6,7 @@ It consists of two independent services:
 - server.py: A secure MCP Server (hosting Wikipedia tools) that enforces JWT validation
 
 ## Instructions:
-1. git clone https://github.com/yourusername/mcp-server-auth.git
+1. git clone https://github.com/nikvi/sample-mcp-server-with-auth.git
 2. cd mcp-server-auth
 3. Set up environment:
     * uv venv
