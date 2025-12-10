@@ -1,9 +1,16 @@
 [project]
-name = "grnded-agents-server"
+name = "mcp-agents-server"
 version = "0.1.0"
-description = "Add your description here"
+description = "A secure MCP server providing Wikipedia search tools, protected by OAuth 2.0."
+authors = [
+    {name = "Nikki Vinayan", email = "info@nikvi.dev"},
+]
 readme = "README.md"
 requires-python = ">=3.10"
+
+[project.urls]
+Homepage = "https://github.com/nikvi/sample-mcp-server-with-auth"
+
 dependencies = [
     "anthropic>=0.75.0",
     "cryptography>=46.0.3",
