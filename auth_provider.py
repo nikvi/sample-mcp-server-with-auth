@@ -3,6 +3,7 @@ import uvicorn
 import time
 import uuid
 import json
+import logging
 from typing import Dict
 from fastapi import FastAPI, Form, HTTPException, Request
 from fastapi.responses import JSONResponse, HTMLResponse
@@ -14,6 +15,10 @@ import jwt # pip install pyjwt
 PORT = 9090
 ISSUER = f"http://localhost:{PORT}"
 CODE_STORE: Dict[str, dict] = {} # In-memory storage for Auth Codes
+
+# --- LOGGING SETUP ---
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 # --- CRYPTO SETUP (Generate Keys on Startup) ---
 private_key = rsa.generate_private_key(public_exponent=65537, key_size=2048)
@@ -77,7 +82,7 @@ def register(client_metadata: dict):
     Accepts ANY client registration. 
     Returns a fake Client ID to make the client happy.
     """
-    print(f"📝 [Auth] Registered Client: {client_metadata.get('client_name')}")
+    logger.info(f"Registered Client: {client_metadata.get('client_name')}")
     return {
         "client_id": "local_client_" + str(uuid.uuid4())[:8],
         "client_secret": "local_secret_" + str(uuid.uuid4())[:8],
@@ -155,5 +160,5 @@ def token(
     }
 
 if __name__ == "__main__":
-    print(f"🚀 Local Auth Server running on {ISSUER}")
+    logger.info(f"Local Auth Server running on {ISSUER}")
     uvicorn.run(app, host="0.0.0.0", port=PORT)
